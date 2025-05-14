@@ -15,7 +15,7 @@ function Login() {
     email: "",
     password: "",
   });
- 
+
   const navigate = useNavigate();
 
   const onChange = (event) => {
@@ -32,7 +32,8 @@ function Login() {
     await api.postLogin(user).then(
       (response) => {
         alert(response.data.message);
-        localStorage.setItem('authenticated', true)
+        localStorage.setItem("authenticated", true);
+        localStorage.setItem("token", response.data.token);
         navigate("users/");
       },
       (error) => {
